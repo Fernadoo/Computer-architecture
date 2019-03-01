@@ -1,0 +1,28 @@
+/* Auxiliary function for printing skiplist. */
+template<class Key, class Val, class Compare>
+void
+skiplist<Key, Val, Compare>::print_list()
+{
+    /* Show current status. */
+    printf("  Skiplist status is now:\n");
+    printf("    -- Size: %d, Level: %d, Empty: %d\n", cap, lev, empty());
+    /* Loop through list, starting from upper level. */
+    for (int idx = lev - 1; idx >= 0; idx--) {
+        _listnode *n = (header->forward)[idx];
+        _listnode *_n = (header->forward)[0];
+        printf("    -");
+        /* For every node in list. */
+        while (_n != nullptr && n != nullptr) {
+            /* If node lives in level idx, print (key, val) pair. */
+            if (_n == n) {
+                printf(" [%3d, %3d] ", n->data.first, n->data.second);
+                n = (n->forward)[idx];
+            /* Else print blank spaces of same width. */
+            } else
+                printf("            ");
+            _n = (_n->forward)[0];
+        }
+        /* Newline. */
+        printf("\n");
+    }
+}

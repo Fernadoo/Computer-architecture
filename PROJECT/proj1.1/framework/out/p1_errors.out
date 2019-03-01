@@ -1,0 +1,16 @@
+.text
+00e83025
+01200008
+0150502a
+3c0b007b
+82080000
+0c000000
+354b0abc
+1509fff8
+
+.symbol
+0	label
+24	l1
+
+.relocation
+20	label
